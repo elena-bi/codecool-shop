@@ -41,6 +41,13 @@
         <strong th:text="${category.name}">Category Title</strong>
     </div>
 
+    <div class="sidenav">
+        <div class="sidebar-bottom">
+            <a class="btn btn-success">Checkout</a>
+            <a class="btn btn-success">Close</a>
+        </div>
+    </div>
+
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
