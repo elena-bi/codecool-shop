@@ -13,9 +13,9 @@ function addToCartButtonListener() {
             let sidebar = document.querySelector('.sidenav');
             let cartProductDiv = `
                         <div class="cart-item">
-                            <div>${productName}</div>
-                            <div>${productPrice}</div>
-                            <div>${quantity}</div>
+                            <div class="product-name">${productName}</div>
+                            <div class="product-price">${productPrice}</div>
+                            <div class="quantity">${quantity}</div>
                             <div class="plus-minus">
                                 <div class="quant-plus">+</div>/<div class="quant-minus">-</div>
                             </div> 
