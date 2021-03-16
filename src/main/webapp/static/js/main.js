@@ -6,7 +6,15 @@ function init() {
 function addToCartButtonListener() {
     document.querySelectorAll('.btn.btn-success')
         .forEach(btn => btn.addEventListener("click",
-            () => console.log(btn)))
+            () => {
+            let productName = btn.name;
+            let productPrice = btn.parentElement.parentElement.firstElementChild.innerText;
+            let quantity = 1;
+            
+
+
+            }
+        ))
 }
 
 init()
