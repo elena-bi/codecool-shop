@@ -80,16 +80,21 @@
     bottom: 0;
 }
 
-.cart-item {}
+.cart-item {
+    display: inline-block;
+}
 
-.product-name {}
+.product-name {
+    font-size: 1rem;
+    font-family: Manjari;
+}
 
-.product-price {}
+.product-price {
+    font-size: 1rem;
+    font-family: Manjari;
+}
 
-.quantity {}
-
-.plus-minus {}
-
-.quant-plus {}
-
-.quant-minus {}
+.quantity {
+    font-size: 1rem;
+    font-family: Manjari;
+}
