@@ -74,3 +74,8 @@
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
 }
+
+.sidebar-bottom {
+    position: absolute;
+    bottom: 0;
+}
