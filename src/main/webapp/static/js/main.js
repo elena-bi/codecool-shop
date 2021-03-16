@@ -15,12 +15,9 @@ function addToCartButtonListener() {
                         <div class="cart-item">
                             <div class="product-name">${productName}</div>
                             <div class="product-price">${productPrice}</div>
-                            <div class="quantity">${quantity}</div>
-                            <div class="plus-minus">
-                                <div class="quant-plus">+</div>/<div class="quant-minus">-</div>
-                            </div> 
+                            <div class="quantity">${quantity}<a>+</a><a>-</a></div>
                         </div>`;
-                sidebar.style.display = "flex";
+                sidebar.style.display = "block";
                 sidebar.insertAdjacentHTML("beforeend", cartProductDiv);
 
             }
