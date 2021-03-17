@@ -33,16 +33,22 @@ function addToCartButtonListener() {
                 minus.setAttribute("class", "minus");
 
                 plus.addEventListener("click", () => {
-                    console.log(plus.parentElement);
+                    plus.parentElement.querySelector(".quantity").innerText =
+                        parseInt(plus.parentElement.querySelector(".quantity").innerText) + 1;
                 });
                 minus.addEventListener("click", () => {
-                    console.log(plus.parentElement);
+                    if (parseInt(plus.parentElement.querySelector(".quantity").innerText) > 1) {
+                        plus.parentElement.querySelector(".quantity").innerText =
+                            parseInt(plus.parentElement.querySelector(".quantity").innerText) - 1;
+                    } else {
+                        plus.parentElement.remove();
+                    }
                 });
 
                 sidebar.insertAdjacentHTML("beforeend", cartProductDiv);
 
-                sidebar.insertAdjacentElement("beforeend", plus);
-                sidebar.insertAdjacentElement("beforeend", minus);
+                sidebar.querySelector(`div[id="${productId}"]`).insertAdjacentElement("beforeend", minus);
+                sidebar.querySelector(`div[id="${productId}"]`).insertAdjacentElement("beforeend", plus);
             }
             }
         ))
