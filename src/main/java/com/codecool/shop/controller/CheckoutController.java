@@ -1,4 +1,11 @@
 package com.codecool.shop.controller;
 
-public class CheckoutController {
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(urlPatterns = {"/cart"})
+public class CheckoutController extends HttpServlet {
+
+
+
 }
