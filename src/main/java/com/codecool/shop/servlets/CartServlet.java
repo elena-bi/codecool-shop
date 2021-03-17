@@ -1,6 +1,8 @@
 package com.codecool.shop.servlets;
 
 
+import com.codecool.shop.dao.implementation.CartDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.google.gson.JsonArray;
 
 import javax.script.ScriptContext;
@@ -25,8 +27,6 @@ public class CartServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
     }
 
     @Override
@@ -37,6 +37,7 @@ public class CartServlet extends HttpServlet {
         for (int i = 0; i < message.length() - 2; i+=4) {
             cartMap.put((int) message.charAt(i) - 48, (int) message.charAt(i + 2) - 48);
         }
-
+        CartDao shoppingCart = CartDaoMem.getInstance();
+        shoppingCart.setCartMap(cartMap);
     }
 }
