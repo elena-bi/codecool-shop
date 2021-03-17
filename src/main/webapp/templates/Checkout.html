@@ -35,19 +35,21 @@
 </div>
 
 <div id="checkout-form-container" class="row">
-    <form action="/Checkout" method="get">
-        <label for="name"></label>
+    <form action="/Checkout" method="post">
+        <label for="name">Your Name:</label>
         <input type="text" id="name" name="name">
-        <label for="email-address"></label>
+        <label for="email-address">Your Email Address</label>
         <input type="text" id="email-address" name="email-address">
-        <label for="delivery-address"></label>
+        <label for="delivery-address">Your Delivery Address</label>
         <input type="text" id="delivery-address" name="delivery-address">
-        <label for="phone-number"></label>
+        <label for="phone-number">Your Phone Number</label>
         <input type="text" id="phone-number" name="phone-number">
-        <label for="account-number"></label>
-        <input type="text" id="account-number" name="account-number">
-        <label for="purchase"></label>
-        <input type="submit" id="purchase" value="Submit">
+        <label for="bank">Bank</label>
+        <input type="text" id="bank" name="bank">
+        <label for="card-number">Card Number</label>
+        <input type="text" id="card-number" name="card-number">
+        <label for="purchase">Make Purchase</label>
+        <input type="submit" id="purchase" value="Purchase">
     </form>
 </div>
 
