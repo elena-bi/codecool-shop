@@ -1,6 +1,8 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.dao.UserDetailsDao;
+import com.codecool.shop.dao.implementation.UserDetailsDaoMem;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -17,6 +19,8 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        UserDetailsDao userDetails = UserDetailsDaoMem.getInstance();
+
         String userName = request.getParameter("name");
         String userEmailAddress = request.getParameter("email-address");
         String userDeliveryAddress = request.getParameter("delivery-address");
@@ -24,6 +28,12 @@ public class CheckoutController extends HttpServlet {
         String bankName = request.getParameter("bank");
         String userCardNumber = request.getParameter("card-number");
 
+        userDetails.setUserName(userName);
+        userDetails.setUserEmailAddress(userEmailAddress);
+        userDetails.setUserDeliveryAddress(userDeliveryAddress);
+        userDetails.setPhoneNumber(phoneNumber);
+        userDetails.setBankName(bankName);
+        userDetails.setUserCardNumber(userCardNumber);
 
 
 
