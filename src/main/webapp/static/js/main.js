@@ -77,14 +77,13 @@ function cancelCart() {
 
 function viewCartSendApi() {
     document.querySelector(".view-cart").addEventListener("click", (event) => {
-        event.preventDefault();
         let data = new Map()
         document.querySelectorAll(".cart-item").forEach(item => {
             data.set(item.id, item.querySelector(".quantity").innerText);
         })
         fetch("/api/cart", {
             method: "POST",
-            body: JSON.stringify([...data]),
+            body: [...data],
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
