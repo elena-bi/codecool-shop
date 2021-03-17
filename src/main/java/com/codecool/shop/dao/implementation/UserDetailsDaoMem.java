@@ -74,4 +74,9 @@ public class UserDetailsDaoMem implements UserDetailsDao {
     public String getUserCardNumber() {
         return userCardNumber;
     }
+
+    @Override
+    public void setUserCardNumber(String userCardNumber) {
+        this.userCardNumber = userCardNumber;
+    }
 }
