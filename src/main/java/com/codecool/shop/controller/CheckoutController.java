@@ -34,9 +34,6 @@ public class CheckoutController extends HttpServlet {
         userDetails.setPhoneNumber(phoneNumber);
         userDetails.setBankName(bankName);
         userDetails.setUserCardNumber(userCardNumber);
-
-
-
     }
 
     @Override
@@ -45,7 +42,6 @@ public class CheckoutController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request, response, request.getServletContext());
         engine.process("Checkout.html", context, response.getWriter());
-
     }
 
 }
