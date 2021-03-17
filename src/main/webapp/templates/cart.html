@@ -47,14 +47,17 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <p class="lead" th:text="quantity ${prod.getQuantity()}">1</p>
+                        <p>QUANTITY:</p>
+                        <p class="lead" th:text="${prod.getQuantity()}">1</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 <div>
-    <a class="btn btn-success">Checkout<a>
+    <p class="sum-total">Total Price:</p>
+    <p class="sum-total" th:text="${total}">1</p>
+    <a class="btn btn-success" href="/checkout">Checkout<a>
 </div>
 </div>
 
