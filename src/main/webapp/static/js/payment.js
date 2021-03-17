@@ -79,3 +79,20 @@ function getPayPalData() {
         'password' : `${passwordElem.value}`
     }
 }
+
+function getCardData() {
+    let cardNumberElem = document.getElementById('card-number');
+    let holderElem = document.getElementById('card-holder-name');
+    let expiryElem = document.getElementById('expiry-date');
+    let safetyCodeElem = document.getElementById('safety-code');
+    if (cardNumberElem == null || holderElem == null || expiryElem == null || safetyCodeElem == null) return null;
+    if (cardNumberElem.value.length === 0 || typeof (cardNumberElem.value) !== 'number') return null;
+    if (holderElem.value.length === 0) return null;
+    if (safetyCodeElem.value.length === 0 || typeof (safetyCodeElem.value) !== 'number') return null;
+    return {
+        'cardNumber' : cardNumberElem.value,
+        'cardHolder' : holderElem.value,
+        'expiryDate' : expiryElem.value,
+        'safetyCode' : safetyCodeElem.value
+    };
+}
