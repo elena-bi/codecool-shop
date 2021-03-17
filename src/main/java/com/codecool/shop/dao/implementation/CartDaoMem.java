@@ -1,10 +1,10 @@
 package com.codecool.shop.dao.implementation;
 
-import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.dao.CartDao;
 
 import java.util.HashMap;
 
-public class CartDaoMem implements CartDao{
+public class CartDaoMem implements CartDao {
     private HashMap<Integer, Integer> cartMap;
     private static CartDaoMem instance = null;
 

@@ -24,7 +24,8 @@ public class CheckoutController extends HttpServlet {
         String bankName = request.getParameter("bank");
         String userCardNumber = request.getParameter("card-number");
 
-        System.out.println(userName + ", " + userEmailAddress + ", " + userDeliveryAddress + ", " + phoneNumber + ", " + bankName + ", " + userCardNumber);
+
+
 
     }
 

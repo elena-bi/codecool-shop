@@ -1,11 +1,9 @@
 package com.codecool.shop.servlets;
 
 
-import com.codecool.shop.dao.implementation.CartDao;
+import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.google.gson.JsonArray;
 
-import javax.script.ScriptContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.stream.Collectors;
-
-import com.codecool.hackernews.JsonHandler;
 
 @WebServlet(urlPatterns = {"/api/cart"})
 public class CartServlet extends HttpServlet {
