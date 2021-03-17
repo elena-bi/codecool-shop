@@ -1,6 +1,7 @@
 function init() {
 
     cancelCart()
+    viewCartSendApi()
     addToCartButtonListener()
 }
 
@@ -72,6 +73,25 @@ function cancelCart() {
         document.querySelectorAll(".cart-item").forEach(item => item.remove());
         document.querySelector(".sidenav").style.display = "none";
     })
+}
+
+function viewCartSendApi() {
+    document.querySelector(".view-cart").addEventListener("click", (event) => {
+        event.preventDefault();
+        let data = new Map()
+        document.querySelectorAll(".cart-item").forEach(item => {
+            data.set(item.id, item.querySelector(".quantity").innerText);
+        })
+        fetch("/api/cart", {
+            method: "POST",
+            body: JSON.stringify([...data]),
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+        })
+    })
+
 }
 
 init()
