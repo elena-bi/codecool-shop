@@ -22,4 +22,6 @@ public interface UserDetailsDao {
     void setBankName(String bankName);
 
     String getUserCardNumber();
+
+    void setUserCardNumber(String userCardNumber);
 }
