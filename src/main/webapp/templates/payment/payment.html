@@ -26,13 +26,14 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <script src="/static/js/payment.js" defer></script>
 </head>
 <body>
     <div id="main">
-        <form action="">
+        <form>
             <p>Select a payment method:</p>
-            <input type="radio" id="card" name="payment-method" value="card">
-            <label for="card">Card</label> <br>
+            <input type="radio" id="bank-card" name="payment-method" value="card">
+            <label for="bank-card">Card</label> <br>
             <input type="radio" id="paypal" name="payment-method" value="paypal">
             <label for="paypal">PayPal</label>
         </form>
