@@ -10,6 +10,7 @@ function onPaymentMethodSubmit() {
 
 function getPaymentMethod() {
     if (document.getElementById('bank-card').checked) {
+        document.getElementById('main').innerHTML = '';
         createBankCardField();
     } else if (document.getElementById('paypal').checked) {
         document.getElementById('main').innerHTML = '';
@@ -31,9 +32,24 @@ function createPayPalField() {
 }
 
 function createBankCardField() {
-
+    let form = document.createElement('form');
+    form.innerHTML = '<label for="card-number">Card number:</label><br>' +
+        '<input type="number" id="card-number"><br>' +
+        '<label for="card-holder-name">Card holder:</label><br>' +
+        '<input type="text" id="card-holder-name"><br>' +
+        '<label for="expiry-date">Expiry date:</label><br>' +
+        '<input type="month" id="expiry-date"><br>' +
+        '<label for="safety-code">Safety code:</label><br>' +
+        '<input type="password" id="safety-code"><br>' +
+        '<input type="button" id="submit-card-payment" value="Submit">';
+    document.getElementById('main').appendChild(form);
+    document.getElementById('submit-card-payment').addEventListener('click', submitCardPayment);
 }
 
 function submitPayPalPayment() {
     console.log('pay');
+}
+
+function submitCardPayment() {
+    console.log('card pay');
 }
