@@ -47,9 +47,35 @@ function createBankCardField() {
 }
 
 function submitPayPalPayment() {
-    console.log('pay');
+    let data = getPayPalData();
+    if (data == null) {
+        console.log('Data not satisfied');
+        return;
+    }
+    fetch('/payment/paypal', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(response => response.json())
+        .then(resp => console.log(resp)); // Temporary
 }
 
 function submitCardPayment() {
     console.log('card pay');
+}
+
+function getPayPalData() {
+    let userNameElem = document.getElementById('paypal-username');
+    let passwordElem = document.getElementById('paypal-password');
+    if (userNameElem == null) return null;
+    if (userNameElem.value.length === 0) return null;
+    if (passwordElem == null) return null;
+    if (passwordElem.value.length === 0) return null;
+    return {
+        'username' : `${userNameElem.value}`,
+        'password' : `${passwordElem.value}`
+    }
 }
