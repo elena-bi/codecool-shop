@@ -17,7 +17,6 @@ public class RequestToJsonObject {
             content.append(inputLine);
         }
         br.close();
-        System.out.println(content);
         Gson gson = new Gson();
         return gson.fromJson(content.toString(), JsonObject.class);
     }
