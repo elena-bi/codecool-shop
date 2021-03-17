@@ -64,7 +64,20 @@ function submitPayPalPayment() {
 }
 
 function submitCardPayment() {
-    console.log('card pay');
+    let data = getCardData();
+    if (data == null) {
+        console.log('Data not satisfied');
+        return;
+    }
+    fetch('payment/card', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(response => response.json())
+        .then(resp => console.log(resp)); // Temporary
 }
 
 function getPayPalData() {
