@@ -20,9 +20,20 @@ function getPaymentMethod() {
 }
 
 function createPayPalField() {
-
+    let form = document.createElement('form');
+    form.innerHTML = '<label for="paypal-username">Username:</label><br>' +
+        '<input type="text" id="paypal-username"><br>' +
+        '<label for="paypal-password">Password:</label><br>' +
+        '<input type="password" id="paypal-password"><br>' +
+        '<input type="button" id="submit-paypal-payment" value="Submit">';
+    document.getElementById('main').appendChild(form);
+    document.getElementById('submit-paypal-payment').addEventListener('click', submitPayPalPayment);
 }
 
 function createBankCardField() {
 
+}
+
+function submitPayPalPayment() {
+    console.log('pay');
 }
