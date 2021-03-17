@@ -65,7 +65,7 @@
 .sidenav {
     display: none;
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 160px; /* Set the width of the sidebar */
+    width: 200px; /* Set the width of the sidebar */
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
@@ -80,26 +80,70 @@
     bottom: 0;
 }
 
+.sidebar-bottom a {
+    font-size: 1.3em;
+    margin: 10px;
+    background-color: rgba(0, 0, 200, 0.2);
+    border-radius: 12%;
+    border: 1px solid rgba(200, 200, 200, 0.1);
+    color: black;
+}
+
+
 .cart-item {
     display: inline-block;
 }
 
 .product-name {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: Manjari;
 }
 
 .product-price {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-family: Manjari;
 }
 
 .quantity {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-family: Manjari;
+}
+
+.plus {
+    margin: auto;
+    padding: 5px;
+    font-size: 1.5rem;
+}
+
+.minus {
+    margin: auto;
+    padding: 5px;
+    font-size: 1.5rem;
 }
 
 .sum-total {
     font-size: 1.5rem;
     font-family: Dialog;
+}
+
+.header-text {
+    background: darkgray;
+    text-align: center;
+}
+
+.checkout-form-container {
+    text-align: center;
+    margin: auto;
+    width: 250px;
+    clear: both;
+}
+
+.checkout-form-container label {
+    font-family: "Droid Sans Mono";
+    font-size: 1.1rem;
+}
+
+.checkout-form-container input {
+    width: 100%;
+    clear: both;
 }
