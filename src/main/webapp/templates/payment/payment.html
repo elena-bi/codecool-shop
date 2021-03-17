@@ -29,13 +29,19 @@
 </head>
 <body>
     <div id="main">
-        <input type="radio" id="card" name="payment-method" value="card">
-        <label for="card">Card</label> <br>
-        <input type="radio" id="paypal" name="payment-method" value="paypal">
-        <label for="paypal">PayPal</label>
+        <form action="">
+            <p>Select a payment method:</p>
+            <input type="radio" id="card" name="payment-method" value="card">
+            <label for="card">Card</label> <br>
+            <input type="radio" id="paypal" name="payment-method" value="paypal">
+            <label for="paypal">PayPal</label>
+        </form>
+        <div id="submit-container">
+            <button id="submit-payment-type">Submit</button>
+        </div>
     </div>
     <div id="sum">
-        <strong th:text="${sum}"></strong>
+        <strong th:text="'Total price : ' + ${sum} + '$'"></strong>
     </div>
 </body>
 </html>
