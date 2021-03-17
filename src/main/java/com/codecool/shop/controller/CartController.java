@@ -33,26 +33,25 @@ public class CartController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+            int totalPrice = 0;
             CartDao shoppingCart = CartDaoMem.getInstance();
             HashMap cart = shoppingCart.getCartMap();
 
             ProductDao productsList = ProductDaoMem.getInstance();
             List<Product> cartContents = new ArrayList<>();
-//            List<Integer> productQuantity = new ArrayList<>();
 
             Iterator it = cart.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry)it.next();
                 productsList.find((int)pair.getKey()).setQuantity((int)pair.getValue());
-//                productQuantity.add((int)pair.getValue());
                 cartContents.add(productsList.find((int)pair.getKey()));
                 it.remove();
+                totalPrice += (productsList.find((int)pair.getKey()).getDefaultPrice() * (int) pair.getValue());
             }
 
             TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
             WebContext context = new WebContext(req, resp, req.getServletContext());
-//            context.setVariable("quantities", productQuantity);
+            context.setVariable("total", totalPrice + " USD");
             context.setVariable("products", cartContents);
             // // Alternative setting of the template context
             // Map<String, Object> params = new HashMap<>();
