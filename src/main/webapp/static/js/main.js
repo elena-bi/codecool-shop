@@ -1,5 +1,6 @@
 function init() {
 
+    cancelCart()
     addToCartButtonListener()
 }
 
@@ -64,6 +65,13 @@ function findProductInCartAndIncrement(productId) {
         }
     }
     return false;
+}
+
+function cancelCart() {
+    document.querySelector(".cancel-cart").addEventListener("click", () => {
+        document.querySelectorAll(".cart-item").forEach(item => item.remove());
+        document.querySelector(".sidenav").style.display = "none";
+    })
 }
 
 init()
