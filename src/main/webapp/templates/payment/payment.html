@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
@@ -26,28 +26,23 @@
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+    <script src="/static/js/payment.js" defer></script>
 </head>
-
 <body>
-
-<div class="header-text">
-    <h1>Checkout</h1>
-</div>
-<div class="checkout-form-container">
-    <form action="/Checkout" method="post">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name"><br>
-        <label for="email-address">Your Email Address</label>
-        <input type="text" id="email-address" name="email-address"><br>
-        <label for="delivery-address">Your Delivery Address</label>
-        <input type="text" id="delivery-address" name="delivery-address"><br>
-        <label for="phone-number">Your Phone Number</label>
-        <input type="text" id="phone-number" name="phone-number"><br>
-        <input type="submit" id="purchase" value="Purchase">
-    </form>
-</div>
-
-<div th:replace="footer.html :: copy"></div>
-
+    <div id="main">
+        <form>
+            <p>Select a payment method:</p>
+            <input type="radio" id="bank-card" name="payment-method" value="card">
+            <label for="bank-card">Card</label> <br>
+            <input type="radio" id="paypal" name="payment-method" value="paypal">
+            <label for="paypal">PayPal</label>
+        </form>
+        <div id="submit-container">
+            <button id="submit-payment-type">Submit</button>
+        </div>
+    </div>
+    <div id="sum">
+        <strong th:text="'Total price : ' + ${sum} + '$'"></strong>
+    </div>
 </body>
 </html>

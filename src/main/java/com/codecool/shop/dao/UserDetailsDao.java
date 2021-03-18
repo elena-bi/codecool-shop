@@ -16,12 +16,4 @@ public interface UserDetailsDao {
     String getPhoneNumber();
 
     void setPhoneNumber(String phoneNumber);
-
-    String getBankName();
-
-    void setBankName(String bankName);
-
-    String getUserCardNumber();
-
-    void setUserCardNumber(String userCardNumber);
 }

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
@@ -27,27 +27,43 @@
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
-
 <body>
-
-<div class="header-text">
-    <h1>Checkout</h1>
-</div>
-<div class="checkout-form-container">
-    <form action="/Checkout" method="post">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name"><br>
-        <label for="email-address">Your Email Address</label>
-        <input type="text" id="email-address" name="email-address"><br>
-        <label for="delivery-address">Your Delivery Address</label>
-        <input type="text" id="delivery-address" name="delivery-address"><br>
-        <label for="phone-number">Your Phone Number</label>
-        <input type="text" id="phone-number" name="phone-number"><br>
-        <input type="submit" id="purchase" value="Purchase">
-    </form>
-</div>
-
-<div th:replace="footer.html :: copy"></div>
-
+    <div id="order-details">
+        <strong>User details</strong>
+        <table id="user-details">
+            <tbody>
+                <tr id="user-name">
+                    <td>Name: </td>
+                    <td th:text="${userDetails.userName}"></td>
+                </tr>
+                <tr id="user-address">
+                    <td>Address: </td>
+                    <td th:text="${userDetails.userDeliveryAddress}"></td>
+                </tr>
+                <tr id="user-phone">
+                    <td>Phone number: </td>
+                    <td th:text="${userDetails.phoneNumber}"></td>
+                </tr>
+                <tr id="user-email">
+                    <td>Email: </td>
+                    <td th:text="${userDetails.userEmailAddress}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <strong>Order details</strong>
+        <table id="item-details">
+            <tbody>
+                <tr th:each="item : ${items}" class="order-item">
+                    <td th:text="${item.getKey()}"></td>
+                    <td th:text="${item.getValue().get('amount')}"></td>
+                    <td th:text="${item.getValue().get('price')}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:text="'Total price: ' + ${totalPrice} + '$'" class="total-price"></div>
+    </div>
+    <div class="to-homepage-btn">
+        <input type="button" value="To Homepage" onclick="window.location='/'">
+    </div>
 </body>
 </html>
