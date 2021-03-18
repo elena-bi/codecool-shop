@@ -45,10 +45,9 @@
                 <div class="card-body">
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                    </div>
+                    </div></br>
                     <div class="card-text">
-                        <p>QUANTITY:</p>
-                        <p class="lead" th:text="${prod.getQuantity()}">1</p>
+                        <p class="lead" th:text="${'Quantity: ' + prod.getQuantity()}">1</p>
                     </div>
                 </div>
             </div>
