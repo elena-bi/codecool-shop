@@ -7,8 +7,6 @@ public class UserDetailsDaoMem implements UserDetailsDao {
     private String userEmailAddress;
     private String userDeliveryAddress;
     private String phoneNumber;
-    private String bankName;
-    private String userCardNumber;
     private static UserDetailsDaoMem instance;
 
     private UserDetailsDaoMem() {}
@@ -58,25 +56,5 @@ public class UserDetailsDaoMem implements UserDetailsDao {
     @Override
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public String getBankName() {
-        return bankName;
-    }
-
-    @Override
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
-
-    @Override
-    public String getUserCardNumber() {
-        return userCardNumber;
-    }
-
-    @Override
-    public void setUserCardNumber(String userCardNumber) {
-        this.userCardNumber = userCardNumber;
     }
 }

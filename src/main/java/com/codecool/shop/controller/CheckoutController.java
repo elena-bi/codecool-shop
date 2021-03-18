@@ -25,15 +25,11 @@ public class CheckoutController extends HttpServlet {
         String userEmailAddress = request.getParameter("email-address");
         String userDeliveryAddress = request.getParameter("delivery-address");
         String phoneNumber = request.getParameter("phone-number");
-        String bankName = request.getParameter("bank");
-        String userCardNumber = request.getParameter("card-number");
 
         userDetails.setUserName(userName);
         userDetails.setUserEmailAddress(userEmailAddress);
         userDetails.setUserDeliveryAddress(userDeliveryAddress);
         userDetails.setPhoneNumber(phoneNumber);
-        userDetails.setBankName(bankName);
-        userDetails.setUserCardNumber(userCardNumber);
         response.sendRedirect("/payment");
     }
 
