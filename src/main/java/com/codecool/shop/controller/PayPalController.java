@@ -1,5 +1,6 @@
 package com.codecool.shop.controller;
 
+import com.codecool.shop.util.ConfirmationEmailManager;
 import com.codecool.shop.util.RequestToJsonObject;
 import com.google.gson.JsonObject;
 
@@ -21,6 +22,7 @@ public class PayPalController extends HttpServlet {
             isTransactionSuccessful = false;
         } else {
             isTransactionSuccessful = true;
+            ConfirmationEmailManager.sendConfirmationEmail();
         }
         resp.getWriter().println(isTransactionSuccessful);
     }
