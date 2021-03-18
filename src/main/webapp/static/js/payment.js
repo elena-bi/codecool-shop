@@ -50,6 +50,7 @@ function submitPayPalPayment() {
     let data = getPayPalData();
     if (data == null) {
         console.log('Data not satisfied');
+        alert('Credentials are invalid!');
         return;
     }
     fetch('/payment/paypal', {
@@ -60,13 +61,20 @@ function submitPayPalPayment() {
         }
     })
         .then(response => response.json())
-        .then(resp => console.log(resp)); // Temporary
+        .then(resp => {
+            if (resp) {
+                window.location.href = '/confirmation';
+            } else {
+                alert('Credentials are invalid!');
+            }
+        }); // Temporary
 }
 
 function submitCardPayment() {
     let data = getCardData();
     if (data == null) {
         console.log('Data not satisfied');
+        alert('Card details are not valid!');
         return;
     }
     fetch('payment/card', {
@@ -77,7 +85,13 @@ function submitCardPayment() {
         }
     })
         .then(response => response.json())
-        .then(resp => console.log(resp)); // Temporary
+        .then(resp => {
+            if (resp) {
+                window.location.href = '/confirmation';
+            } else {
+                alert('Card details are not valid!');
+            }
+        }); // Temporary
 }
 
 function getPayPalData() {
