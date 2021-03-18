@@ -43,7 +43,7 @@ public class ConfirmationEmailManager {
                 .append("Address: ")
                 .append(userDetails.getUserDeliveryAddress())
                 .append("\n")
-                .append("Phnoe number: ")
+                .append("Phone number: ")
                 .append(userDetails.getPhoneNumber())
                 .append("\n\n")
                 .append("Order:")
