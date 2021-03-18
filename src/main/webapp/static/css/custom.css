@@ -60,3 +60,119 @@
 {
     margin: 0 0 11px;
 }
+
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background: #f4f4f4;
+    height: 100vh;
+}
+
+button{
+    /*font-family: 'Ubuntu', sans-serif;*/
+    top: 50%;
+    left: 50%;
+    /*transform: translate(-50%, -50%);*/
+
+    width: 170px;
+    height: 40px;
+    line-height: 1;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #8C82FC;
+    background: #fff;
+    color: #8C82FC;
+    border-radius: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .35s;
+    margin-bottom: 20px;
+}
+
+button:hover{
+    background: #8C82FC;
+    color: #fff;
+}
+
+.form-control{
+    /*font-family: 'Ubuntu', sans-serif;*/
+    top: 50%;
+    left: 50%;
+    /*transform: translate(-50%, -50%);*/
+
+    width: 170px;
+    height: 40px;
+    line-height: 1;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 3px solid #8C82FC;
+    background: #fff;
+    color: #8C82FC;
+    border-radius: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .35s;
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+
+.form-group{
+    display: inline-block;
+}
+
+.btn-success {
+    /*font-family: 'Ubuntu', sans-serif;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+
+    width: 80px;
+    line-height: 1;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border: 3px solid #8C82FC;
+    background: #fff;
+    color: #8C82FC;
+    border-radius: 40px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .35s;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    margin-left: 20px;
+
+}
+
+.btn-success:hover{
+    background: #8C82FC;
+    color: #fff;
+    border: 3px solid #8C82FC;
+
+}
+
+.card-body{
+    margin-bottom: 10px;
+}
+
+.card{
+    margin-top: 10px;
+}
+
+.card-text {
+    display: inline-block;
+}
+
+.logo{
+    display: grid;
+    width: 100%;
+    margin-bottom: 100px;
+    background: #FFFFFF;
+    position: -webkit-sticky;
+}
