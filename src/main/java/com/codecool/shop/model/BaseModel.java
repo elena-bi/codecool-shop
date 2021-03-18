@@ -8,6 +8,7 @@ public class BaseModel {
     protected int id;
     protected String name;
     protected String description;
+    protected int quantity = 0;
 
     public BaseModel(String name) {
         this.name = name;
@@ -18,6 +19,13 @@ public class BaseModel {
         this.description = description;
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 
     public int getId() {
         return id;
