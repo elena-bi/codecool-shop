@@ -1,6 +1,8 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.dao.CartDao;
+import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.model.Product;
 import org.thymeleaf.TemplateEngine;
@@ -18,13 +20,10 @@ import java.util.Map;
 @WebServlet(urlPatterns = {"/payment"})
 public class PaymentController extends HttpServlet {
 
-    // Temporary cart items
-    // TODO: Replace when cart DAO is done
     @Override
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HashMap<Integer, Integer> cart = new HashMap<>(); //Temporary row
-        cart.put(1, 2); //Temporary row
-        cart.put(2, 1); //Temporary row
+        CartDao cartObj = CartDaoMem.getInstance();
+        HashMap<Integer, Integer> cart = cartObj.getCartMap();
         ProductDaoMem productList = ProductDaoMem.getInstance();
         float priceSum = 0;
         for (Map.Entry<Integer, Integer> entry: cart.entrySet()) {

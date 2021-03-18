@@ -34,6 +34,7 @@ public class CheckoutController extends HttpServlet {
         userDetails.setPhoneNumber(phoneNumber);
         userDetails.setBankName(bankName);
         userDetails.setUserCardNumber(userCardNumber);
+        response.sendRedirect("/payment");
     }
 
     @Override

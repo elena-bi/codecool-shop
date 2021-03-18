@@ -40,7 +40,6 @@ public class CartController extends HttpServlet {
                 Map.Entry pair = (Map.Entry)it.next();
                 productsList.find((int)pair.getKey()).setQuantity((int)pair.getValue());
                 cartContents.add(productsList.find((int)pair.getKey()));
-                it.remove();
                 totalPrice += (productsList.find((int)pair.getKey()).getDefaultPrice() * (int) pair.getValue());
             }
 
