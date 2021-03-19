@@ -9,51 +9,64 @@ function addToCartButtonListener() {
     document.querySelectorAll('.btn.btn-success')
         .forEach(btn => btn.addEventListener("click",
             () => {
-            let productName = btn.name;
-            let productPrice = btn.parentElement.parentElement.firstElementChild.innerText;
-            let quantity = 1;
-            let productId = btn.id;
-            let sidebar = document.querySelector('.sidenav');
-            if (findProductInCartAndIncrement(productId)) {}
-            else {
-                let cartProductDiv = `
-                        <div class="cart-item" id="${productId}">
-                            <div class="product-name">${productName}</div>
-                            <div class="product-price">${productPrice}</div>
-                            <div class="quantity">${quantity}</div>
-                        </div>`;
+                    if (findProductInCartAndIncrement(btn.id)) {}
+                    else { addItemToCart(btn) }
+                }
+            )
+        )
+}
 
-                sidebar.style.display = "block";
+function buildCartItemDiv(btn) {
+    let productName = btn.name;
+    let productPrice = btn.parentElement.parentElement.firstElementChild.innerText;
+    let quantity = 1;
+    let productId = btn.id;
+    return `
+            <div class="cart-item" id="${productId}">
+                <div class="product-name">${productName}</div>
+                <div class="product-price">${productPrice}</div>
+                <div class="quantity">${quantity}</div>
+            </div>`;
+}
 
-                let plus = document.createElement("a");
-                let minus = document.createElement("a");
+function addIncrementDecrementCartItems() {
+    let plus = document.createElement("a");
+    let minus = document.createElement("a");
 
-                plus.innerText = "+";
-                minus.innerText = "-";
+    plus.innerText = "+";
+    minus.innerText = "-";
 
-                plus.setAttribute("class", "plus");
-                minus.setAttribute("class", "minus");
+    plus.setAttribute("class", "plus");
+    minus.setAttribute("class", "minus");
 
-                plus.addEventListener("click", () => {
-                    plus.parentElement.querySelector(".quantity").innerText =
-                        parseInt(plus.parentElement.querySelector(".quantity").innerText) + 1;
-                });
-                minus.addEventListener("click", () => {
-                    if (parseInt(plus.parentElement.querySelector(".quantity").innerText) > 1) {
-                        plus.parentElement.querySelector(".quantity").innerText =
-                            parseInt(plus.parentElement.querySelector(".quantity").innerText) - 1;
-                    } else {
-                        plus.parentElement.remove();
-                    }
-                });
+    plus.addEventListener("click", () => {
+        plus.parentElement.querySelector(".quantity").innerText =
+            parseInt(plus.parentElement.querySelector(".quantity").innerText) + 1;
+    });
+    minus.addEventListener("click", () => {
+        if (parseInt(plus.parentElement.querySelector(".quantity").innerText) > 1) {
+            plus.parentElement.querySelector(".quantity").innerText =
+                parseInt(plus.parentElement.querySelector(".quantity").innerText) - 1;
+        } else {
+            plus.parentElement.remove();
+        }
+    });
 
-                sidebar.insertAdjacentHTML("beforeend", cartProductDiv);
+    return [plus, minus];
+}
 
-                sidebar.querySelector(`div[id="${productId}"]`).insertAdjacentElement("beforeend", minus);
-                sidebar.querySelector(`div[id="${productId}"]`).insertAdjacentElement("beforeend", plus);
-            }
-            }
-        ))
+function addItemToCart(product) {
+    let sidebar = document.querySelector('.sidenav');
+    let cartProductDiv = buildCartItemDiv(product);
+    let plusMinusArray = addIncrementDecrementCartItems();
+    let plus = plusMinusArray[0];
+    let minus = plusMinusArray[1];
+
+    sidebar.style.display = "block";
+    sidebar.insertAdjacentHTML("beforeend", cartProductDiv);
+    sidebar.querySelector(`div[id="${product.id}"]`).insertAdjacentElement("beforeend", minus);
+    sidebar.querySelector(`div[id="${product.id}"]`).insertAdjacentElement("beforeend", plus);
+
 }
 
 function findProductInCartAndIncrement(productId) {
