@@ -3,12 +3,11 @@ package com.codecool.shop.util;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.Properties;
 
 public class ReadPropertyValues {
-    private HashMap<String, String> result;
+    private HashMap<String, String> result = new HashMap<>();
     private InputStream inputStream;
 
     public HashMap<String, String> getPropertyValues() throws IOException {
