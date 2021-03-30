@@ -23,7 +23,7 @@ public class DatabaseManager {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
         String dbName = config.get("database");
         String user = config.get("user");
-        String password = System.getenv("MY_PSQL_PASSWORD");
+        String password = config.get("password");
 
         dataSource.setDatabaseName(dbName);
         dataSource.setUser(user);
