@@ -1,5 +1,6 @@
 package com.codecool.shop.dao.database;
 
+import com.codecool.shop.dao.CartDaoJdbc;
 import com.codecool.shop.util.ReadPropertyValues;
 import org.postgresql.ds.PGSimpleDataSource;
 
@@ -12,6 +13,7 @@ public class DatabaseManager {
 
     public void setup() throws SQLException, IOException {
         DataSource dataSource = connect();
+        CartDaoJdbc cartDaoJdbc = new CartDaoJdbc(dataSource);
     }
 
     private DataSource connect() throws SQLException, IOException {
