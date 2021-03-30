@@ -10,6 +10,10 @@ import java.util.HashMap;
 
 public class DatabaseManager {
 
+    public void setup() throws SQLException, IOException {
+        DataSource dataSource = connect();
+    }
+
     private DataSource connect() throws SQLException, IOException {
         ReadPropertyValues properties = new ReadPropertyValues();
         HashMap<String, String> config = properties.getPropertyValues();
