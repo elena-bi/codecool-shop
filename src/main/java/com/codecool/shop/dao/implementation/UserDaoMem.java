@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public class UserDaoMem implements UserDao {
     private List<User> users = new ArrayList<>();
+    private int currentId = 1;
     private static UserDaoMem instance = null;
 
     private UserDaoMem() {}
@@ -33,5 +34,13 @@ public class UserDaoMem implements UserDao {
     @Override
     public void removeUser(int id) {
         getUser(id).ifPresent(user -> users.remove(user));
+    }
+
+    public int getCurrentId() {
+        return currentId;
+    }
+
+    public void incrementCurrentId() {
+        this.currentId++;
     }
 }
