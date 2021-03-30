@@ -8,7 +8,7 @@ public class RegistrationService {
 
     private RegistrationService() {}
 
-    public RegistrationService getInstance() {
+    public static RegistrationService getInstance() {
         if (instance == null) {
             instance = new RegistrationService();
         }

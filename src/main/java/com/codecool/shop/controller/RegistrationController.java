@@ -1,6 +1,9 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import com.codecool.shop.dao.implementation.UserDaoMem;
+import com.codecool.shop.model.User;
+import com.codecool.shop.service.RegistrationService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -19,9 +22,16 @@ public class RegistrationController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         engine.process("registration/registration.html", context, resp.getWriter());
     }
-
+    //TODO: Implement hashing of password
+    //TODO: Implement checking for existing data
+    //TODO: User service layer
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = req.getParameter("user-name");
+        String email = req.getParameter("user-email");
+        String password = req.getParameter("user-password");
+        RegistrationService registrationService = RegistrationService.getInstance();
+        User user = new User(1, username, email, password);
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         engine.process("registration/registration.html", context, resp.getWriter());
