@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
             return;
         }
         HttpSession session = req.getSession();
-        session.setAttribute("user", user.get().getId());
+        session.setAttribute("user", user.get());
         resp.sendRedirect("/");
     }
 }
