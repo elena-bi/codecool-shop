@@ -7,16 +7,12 @@ import java.util.Optional;
 
 public class RegistrationService {
     private UserDaoMem userDaoMem = UserDaoMem.getInstance();
-    private HashService hashService = HashService.getInstance();
-    private static RegistrationService instance = null;
+    private HashService hashService;
+    private ConfirmationEmailService ces;
 
-    private RegistrationService() {}
-
-    public static RegistrationService getInstance() {
-        if (instance == null) {
-            instance = new RegistrationService();
-        }
-        return instance;
+    public RegistrationService(HashService hashService, ConfirmationEmailService ces) {
+        this.hashService = hashService;
+        this.ces = ces;
     }
 
     public boolean register(String username, String email, String password) {
@@ -27,7 +23,7 @@ public class RegistrationService {
         User user = new User(userDaoMem.getCurrentId(), username, email, hashedPassword.get(), salt);
         userDaoMem.incrementCurrentId();
         userDaoMem.addUser(user);
-        ConfirmationEmailService.getInstance().sendRegistrationConfirmationEmail(email);
+        ces.sendRegistrationConfirmationEmail(email);
         return true;
     }
 }

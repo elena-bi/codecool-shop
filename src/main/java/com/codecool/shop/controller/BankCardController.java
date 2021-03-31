@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/payment/card"})
 public class BankCardController extends HttpServlet {
-    private ConfirmationEmailService ces = ConfirmationEmailService.getInstance();
+    private ConfirmationEmailService ces = new ConfirmationEmailService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
