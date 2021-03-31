@@ -1,6 +1,6 @@
 package com.codecool.shop.controller;
 
-import com.codecool.shop.util.ConfirmationEmailManager;
+import com.codecool.shop.service.ConfirmationEmailService;
 import com.codecool.shop.util.RequestToJsonObject;
 import com.google.gson.JsonObject;
 
@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/payment/card"})
 public class BankCardController extends HttpServlet {
+    private ConfirmationEmailService ces = ConfirmationEmailService.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,7 +23,7 @@ public class BankCardController extends HttpServlet {
             isTransactionSuccessful = false;
         } else {
             isTransactionSuccessful = true;
-            ConfirmationEmailManager.sendConfirmationEmail();
+            ces.sendOrderConfirmationEmail();
         }
         resp.getWriter().println(isTransactionSuccessful);
     }
