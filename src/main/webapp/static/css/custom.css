@@ -244,3 +244,9 @@ button:hover{
     background: darkgray;
     text-align: center;
 }
+
+.header {
+    background: lightcyan;
+    text-align: right;
+    z-index: 0;
+}
