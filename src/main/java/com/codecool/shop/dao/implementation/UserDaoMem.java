@@ -8,6 +8,7 @@ import java.util.*;
 
 public class UserDaoMem implements UserDao {
     private Set<User> users = new HashSet<>();
+    private final HashService hashService = new HashService();
     private int currentId = 1;
     private static UserDaoMem instance = null;
 
@@ -52,7 +53,6 @@ public class UserDaoMem implements UserDao {
     }
 
     public boolean isPasswordUsed(String password) {
-        HashService hashService = HashService.getInstance();
         return users.stream().anyMatch(user -> hashService.passwordMatchesHash(password, user.getPasswordHash(), user.getSalt()));
     }
 }

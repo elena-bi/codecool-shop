@@ -18,16 +18,8 @@ import java.util.Properties;
 public class ConfirmationEmailService {
     private final String FROM_NAME = "fillertext@gmail.com"; // Change to valid email to use
     private final String FROM_PASSWORD = "password";         // Change to valid password to use
-    private static ConfirmationEmailService instance = null;
 
-    private ConfirmationEmailService() {}
-
-    public static ConfirmationEmailService getInstance() {
-        if (instance == null) {
-            instance = new ConfirmationEmailService();
-        }
-        return instance;
-    }
+    public ConfirmationEmailService() {}
 
     private Session setupSession() {
         Properties prop = new Properties();

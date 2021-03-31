@@ -14,16 +14,8 @@ public class HashService {
     private static final int KEY_LENGTH = 64;
     private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
     private static final SecureRandom secureRandom = new SecureRandom();
-    private static HashService instance = null;
 
-    private HashService() {}
-
-    public static HashService getInstance() {
-        if (instance == null) {
-            instance = new HashService();
-        }
-        return instance;
-    }
+    public HashService() {}
 
     /**
      * Generates a hashed password with salt
