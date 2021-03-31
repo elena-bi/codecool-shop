@@ -14,8 +14,8 @@
             <input type="submit" value="Login">
         </form>
     </div>
-    <div th:if="${failed == true}" th:text="Login failed!">
-
+    <div th:if="${failed != null && failed == true}">
+        Login failed!
     </div>
 </body>
 </html>
