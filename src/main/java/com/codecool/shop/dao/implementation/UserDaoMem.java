@@ -55,4 +55,11 @@ public class UserDaoMem implements UserDao {
     public boolean isPasswordUsed(String password) {
         return users.stream().anyMatch(user -> hashService.passwordMatchesHash(password, user.getPasswordHash(), user.getSalt()));
     }
+
+    public Optional<User> getUserWithNamePassword(String username, String password) {
+        return users.stream()
+                .filter(user -> username.equals(user.getName()))
+                .filter(user -> hashService.passwordMatchesHash(password, user.getPasswordHash(), user.getSalt()))
+                .findFirst();
+    }
 }

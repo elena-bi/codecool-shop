@@ -32,7 +32,15 @@
 
 <body>
 
-<div class="header"><a href="/registration">Register</a></div>
+<div class="header">
+    <div th:if="${session.isEmpty()}">
+        <a href="/registration">Register</a>
+        <a href="/login">Login</a>
+    </div>
+    <div th:if="${!session.isEmpty()}">
+        <a href="/logout">Logout</a>
+    </div>
+</div>
 
 <div class="logo">
     <img src='/static/img/logo1.png' alt/>
