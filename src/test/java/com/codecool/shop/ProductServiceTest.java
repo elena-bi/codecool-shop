@@ -79,6 +79,13 @@ public class ProductServiceTest {
 
     @Test
     void getProductsForCategory_incorrectCategory_throwsError() {
+        ProductService testProductService = new ProductService(
+                this.productDao,
+                this.productCategoryDao);
+        List<Product> testProductList = new ArrayList<>();
 
+        assertEquals(
+                testProductList,
+                testProductService.getProductsForCategory(0));
     }
 }
