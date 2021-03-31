@@ -10,8 +10,8 @@ import java.util.Base64;
 import java.util.Optional;
 
 public class HashService {
-    private static final int ITERATION = 65536;
-    private static final int KEY_LENGTH = 128;
+    private static final int ITERATION = 5000;
+    private static final int KEY_LENGTH = 64;
     private static final String ALGORITHM = "PBKDF2WithHmacSHA1";
     private static final SecureRandom secureRandom = new SecureRandom();
     private static HashService instance = null;
