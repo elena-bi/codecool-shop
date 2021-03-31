@@ -45,8 +45,15 @@ public class HashService {
         return hashWithSalt(password, salt);
     }
 
+    /**
+     * Checks if password matches hash by using the hashes salt
+     * @param password Plain original String
+     * @param hash String form of a hashed password
+     * @param salt Salt of hash
+     * @return Boolean
+     */
     public boolean passwordMatchesHash(String password, String hash, byte[] salt) {
-        Optional<String> hashedPassword = hashPassword(password);
+        Optional<String> hashedPassword = hashPassword(password, salt);
         return hashedPassword.map(s -> s.equals(hash)).orElse(false);
     }
 
