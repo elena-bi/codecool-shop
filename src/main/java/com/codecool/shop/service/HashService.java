@@ -25,11 +25,22 @@ public class HashService {
         return instance;
     }
 
+    /**
+     * Generates a hashed password with salt
+     * @param password Plain original String
+     * @return String of hashed password
+     */
     public Optional<String> hashPassword(String password) {
         byte[] salt = getNewSalt();
         return hashWithSalt(password, salt);
     }
 
+    /**
+     * Generates a hashed password with salt
+     * @param password Plain original String
+     * @param salt Used for hashing
+     * @return String of hashed password
+     */
     public Optional<String> hashPassword(String password, byte[] salt) {
         return hashWithSalt(password, salt);
     }
