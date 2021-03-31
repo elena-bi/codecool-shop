@@ -4,12 +4,10 @@ import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.HashService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class UserDaoMem implements UserDao {
-    private List<User> users = new ArrayList<>();
+    private Set<User> users = new HashSet<>();
     private int currentId = 1;
     private static UserDaoMem instance = null;
 
