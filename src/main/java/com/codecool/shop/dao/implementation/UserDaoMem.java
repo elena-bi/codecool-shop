@@ -2,6 +2,7 @@ package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.model.User;
+import com.codecool.shop.service.HashService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,22 @@ public class UserDaoMem implements UserDao {
 
     public void incrementCurrentId() {
         this.currentId++;
+    }
+
+    public boolean isNameUsed(String name) {
+        return users.stream().anyMatch(user -> user.getName().equals(name));
+    }
+
+    public boolean isEmailUsed(String email) {
+        return users.stream().anyMatch(user -> user.getEmail().equals(email));
+    }
+
+    public boolean isPasswordUsed(String password) {
+        HashService hashService = HashService.getInstance();
+        return users.stream().anyMatch(user -> {
+            Optional<String> hashedPassword = hashService.hashPassword(password, user.getSalt());
+            if (hashedPassword.isEmpty()) return false;
+            return user.getPasswordHash().equals(hashedPassword.get());
+        });
     }
 }
