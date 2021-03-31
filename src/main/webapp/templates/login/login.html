@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,6 +13,9 @@
             <input type="password" id="user-password" name="user-password"><br>
             <input type="submit" value="Login">
         </form>
+    </div>
+    <div th:if="${failed == true}" th:text="Login failed!">
+
     </div>
 </body>
 </html>
