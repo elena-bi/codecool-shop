@@ -13,13 +13,16 @@ import com.codecool.shop.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProductServiceTest {
     private ProductDao productDao;
     private ProductCategoryDao productCategoryDao;
     private SupplierDao supplierDataStore;
-    private ProductCategory testProduct;
+    private ProductCategory testProductCategory;
     private Supplier testSupplier;
 
     @BeforeEach
@@ -29,14 +32,14 @@ public class ProductServiceTest {
         this.productCategoryDao = ProductCategoryDaoMem.getInstance();
         this.supplierDataStore = SupplierDaoMem.getInstance();
 
-        this.testProduct = new ProductCategory("test",
+        this.testProductCategory = new ProductCategory("test",
                 "dept", "a description");
         this.testSupplier = new Supplier("Supplier", "a description");
         this.supplierDataStore.add(testSupplier);
-        this.productCategoryDao.add(testProduct);
+        this.productCategoryDao.add(testProductCategory);
         this.productDao.add(new Product("Fluorite Tower",
                 15.99f, "USD",
-                "text", testProduct, testSupplier));
+                "text", testProductCategory, testSupplier));
     }
 
     @Test
@@ -46,7 +49,7 @@ public class ProductServiceTest {
                 this.productCategoryDao);
 
         assertEquals(
-                this.testProduct,
+                this.testProductCategory,
                 testProductService.getProductCategory(1));
     }
 
@@ -63,7 +66,15 @@ public class ProductServiceTest {
 
     @Test
     void getProductsForCategory_existingCategory_returnsProducts() {
+        ProductService testProductService = new ProductService(
+                this.productDao,
+                this.productCategoryDao);
+        List<Product> testProductList = new ArrayList<>();
+        testProductList.add(this.productDao.find(1));
 
+        assertEquals(
+                testProductList,
+                testProductService.getProductsForCategory(1));
     }
 
     @Test
