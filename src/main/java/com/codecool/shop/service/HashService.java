@@ -69,7 +69,7 @@ public class HashService {
         }
     }
 
-    private byte[] getNewSalt() {
+    public byte[] getNewSalt() {
         byte[] salt = new byte[16];
         secureRandom.nextBytes(salt);
         return salt;
