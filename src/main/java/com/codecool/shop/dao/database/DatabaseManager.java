@@ -10,20 +10,22 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class DatabaseManager {
+    private ReadPropertyValues properties;
+    private HashMap<String, String> config;
 
-    public void setup() throws SQLException, IOException {
+    public void setup(ReadPropertyValues propertyReader) throws SQLException, IOException {
         DataSource dataSource = connect();
         CartDaoJdbc cartDaoJdbc = new CartDaoJdbc(dataSource);
+        this.properties = propertyReader;
+        this.config = this.properties.getPropertyValues();
     }
 
     private DataSource connect() throws SQLException, IOException {
-        ReadPropertyValues properties = new ReadPropertyValues();
-        HashMap<String, String> config = properties.getPropertyValues();
 
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        String dbName = config.get("database");
-        String user = config.get("user");
-        String password = config.get("password");
+        String dbName = this.config.get("database");
+        String user = this.config.get("user");
+        String password = this.config.get("password");
 
         dataSource.setDatabaseName(dbName);
         dataSource.setUser(user);
