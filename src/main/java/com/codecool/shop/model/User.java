@@ -5,12 +5,14 @@ public class User {
     private final String name;
     private final String email;
     private final String password;
+    private final byte[] salt;
 
-    public User(int id, String name, String email, String password) {
+    public User(int id, String name, String email, String password, byte[] salt) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.salt = salt;
     }
 
     public int getId() {
@@ -25,7 +27,11 @@ public class User {
         return email;
     }
 
-    public String getPassword() {
+    public String getPasswordHash() {
         return password;
+    }
+
+    public byte[] getSalt() {
+        return salt;
     }
 }
