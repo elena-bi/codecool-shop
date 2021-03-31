@@ -26,6 +26,7 @@ public class RegistrationService {
         User user = new User(userDaoMem.getCurrentId(), username, password, email, salt);
         userDaoMem.incrementCurrentId();
         userDaoMem.addUser(user);
+        ConfirmationEmailService.getInstance().sendRegistrationConfirmationEmail(email);
         return true;
     }
 }
