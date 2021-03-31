@@ -25,9 +25,21 @@ public class HashService {
         return instance;
     }
 
-    private Optional<String> hashPassword(String password) {
-        byte[] salt = new byte[16];
-        secureRandom.nextBytes(salt);
+    public Optional<String> hashPassword(String password) {
+        byte[] salt = getNewSalt();
+        return hashWithSalt(password, salt);
+    }
+
+    public Optional<String> hashPassword(String password, byte[] salt) {
+        return hashWithSalt(password, salt);
+    }
+
+    public boolean passwordMatchesHash(String password, String hash, byte[] salt) {
+        Optional<String> hashedPassword = hashPassword(password);
+        return hashedPassword.map(s -> s.equals(hash)).orElse(false);
+    }
+
+    private Optional<String> hashWithSalt(String password, byte[] salt) {
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATION, KEY_LENGTH);
         try {
             SecretKeyFactory factory = SecretKeyFactory.getInstance(ALGORITHM);
@@ -37,5 +49,11 @@ public class HashService {
             System.err.println("Exception in hashPassword()");
             return Optional.empty();
         }
+    }
+
+    private byte[] getNewSalt() {
+        byte[] salt = new byte[16];
+        secureRandom.nextBytes(salt);
+        return salt;
     }
 }
