@@ -55,10 +55,6 @@ public class UserDaoMem implements UserDao {
 
     public boolean isPasswordUsed(String password) {
         HashService hashService = HashService.getInstance();
-        return users.stream().anyMatch(user -> {
-            Optional<String> hashedPassword = hashService.hashPassword(password, user.getSalt());
-            if (hashedPassword.isEmpty()) return false;
-            return user.getPasswordHash().equals(hashedPassword.get());
-        });
+        return users.stream().anyMatch(user -> hashService.passwordMatchesHash(password, user.getPasswordHash(), user.getSalt()));
     }
 }
