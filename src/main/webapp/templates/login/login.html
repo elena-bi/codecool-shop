@@ -13,6 +13,7 @@
             <input type="password" id="user-password" name="user-password"><br>
             <input type="submit" value="Login">
         </form>
+        <input type="button" value="To Homepage" onclick="location.href = '/'">
     </div>
     <div th:if="${failed != null && failed == true}">
         Login failed!
