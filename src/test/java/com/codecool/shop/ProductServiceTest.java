@@ -48,7 +48,6 @@ public class ProductServiceTest {
         assertEquals(
                 this.testProduct,
                 testProductService.getProductCategory(1));
-
     }
 
     @Test
