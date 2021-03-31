@@ -46,7 +46,7 @@ public class HashService {
             byte[] hashedPassword = factory.generateSecret(spec).getEncoded();
             return Optional.of(Base64.getEncoder().encodeToString(hashedPassword));
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            System.err.println("Exception in hashPassword()");
+            System.err.println("Exception in hashWithSalt()");
             return Optional.empty();
         }
     }
