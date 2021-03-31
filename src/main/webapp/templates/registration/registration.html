@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Codecool Shop</title>
+</head>
+<body>
+    <form action="/registration" method="post">
+        <label for="user-name">Username: </label><br>
+        <input type="text" id="user-name" name="user-name"><br>
+        <label for="user-email">E-mail: </label><br>
+        <input type="email" id="user-email" name="user-email"><br>
+        <label for="user-password">Password: </label><br>
+        <input type="password" id="user-password" name="user-password"><br>
+        <input type="submit" value="Register">
+    </form>
+    <input type="button" id="to-homepage" onclick="location.href = '/'" value="To Homepage">
+    <div id="registration-confirmation">
+        <span th:if="${failed == true}">Your credentials are already used!</span>
+        <span th:if="${failed == false}">Successful registration!</span>
+    </div>
+</body>
+</html>
