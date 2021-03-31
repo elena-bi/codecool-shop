@@ -30,10 +30,17 @@ public class RegistrationController extends HttpServlet {
         String username = req.getParameter("user-name");
         String email = req.getParameter("user-email");
         String password = req.getParameter("user-password");
-        RegistrationService registrationService = RegistrationService.getInstance();
-        User user = new User(1, username, email, password);
+
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
+        RegistrationService registrationService = RegistrationService.getInstance();
+        if (!registrationService.register(username, email, password)) {
+            context.setVariable("failed", true);
+        } else {
+            context.setVariable("failed", false);
+        }
+
         engine.process("registration/registration.html", context, resp.getWriter());
     }
 }
