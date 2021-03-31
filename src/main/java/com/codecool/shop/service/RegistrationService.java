@@ -22,8 +22,9 @@ public class RegistrationService {
     public boolean register(String username, String email, String password) {
         if (userDaoMem.isNameUsed(username) || userDaoMem.isEmailUsed(email) || userDaoMem.isPasswordUsed(password)) return false;
         byte[] salt = hashService.getNewSalt();
-        hashService.hashPassword(password, salt);
-        User user = new User(userDaoMem.getCurrentId(), username, password, email, salt);
+        Optional<String> hashedPassword = hashService.hashPassword(password, salt);
+        if (hashedPassword.isEmpty()) return false;
+        User user = new User(userDaoMem.getCurrentId(), username, email, hashedPassword.get(), salt);
         userDaoMem.incrementCurrentId();
         userDaoMem.addUser(user);
         ConfirmationEmailService.getInstance().sendRegistrationConfirmationEmail(email);
